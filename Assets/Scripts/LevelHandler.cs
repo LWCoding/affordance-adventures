@@ -1,15 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class LevelHandler : MonoBehaviour
 {
 
     [Header("Object Assignments")]
-    [SerializeField] private Button _doorButton;
+    [SerializeField] private NextLevelHandler _nextLevelHandler;
 
     [Header("Level Run-Time Properties")]
     public bool CanOpenDoor;
@@ -26,7 +24,7 @@ public class LevelHandler : MonoBehaviour
 
     private void Start()
     {
-        _doorButton.interactable = CanOpenDoor;
+        _nextLevelHandler.IsInteractable = CanOpenDoor;
     }
 
     /// <summary>
