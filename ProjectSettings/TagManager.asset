@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Meltable
   - Door
+  - Key
   layers:
   - Default
   - TransparentFX

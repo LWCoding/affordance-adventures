@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<string> _levelSceneNames;
 
     private int _currLevelIdx = 0;
+    private string _currLoadedLevel;
 
     private void Awake()
     {
@@ -31,12 +32,22 @@ public class GameManager : MonoBehaviour
         // Unload the previously loaded scene, if any
         if (currLevelIdx != 0)
         {
-            SceneManager.UnloadSceneAsync(_levelSceneNames[currLevelIdx - 1]);
+            SceneManager.UnloadSceneAsync(_currLoadedLevel);
         }
         // Load the desired scene
+        _currLoadedLevel = _levelSceneNames[currLevelIdx];
         SceneManager.LoadScene(_levelSceneNames[currLevelIdx], LoadSceneMode.Additive);
         // Set the level text
         _levelText.text = (currLevelIdx + 1).ToString();
+    }
+
+    /// <summary>
+    /// This function resets the current level by unloading it and
+    /// reloading it.
+    /// </summary>
+    public void ResetLevel()
+    {
+        RenderLevel(_currLevelIdx);
     }
 
     /// <summary>

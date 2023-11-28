@@ -12,8 +12,6 @@ public class MakeInteractableHandler : MonoBehaviour
     [Tooltip("Whether this object should destroy itself once colliding")]
     [SerializeField] private bool _shouldDestroyItself;
 
-    private int _objectsDestroyed = 0;
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(_tagToOpen))
