@@ -19,6 +19,7 @@ public class MakeInteractableHandler : MonoBehaviour
             collision.gameObject.TryGetComponent(out Interactable interactable);
             if (interactable != null)
             {
+                AudioManager.Instance.PlaySFX(SoundEffect.DOOR_UNLOCK);
                 interactable.IsInteractable = true;
                 // If we should destroy this object after rendering collision.
                 if (_shouldDestroyItself)

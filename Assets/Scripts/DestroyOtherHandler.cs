@@ -20,6 +20,7 @@ public class DestroyOtherHandler : MonoBehaviour
         {
             if (_shouldDestroyItself && _destroyedObject) { return; }
             Destroy(collision.gameObject);
+            AudioManager.Instance.PlaySFX(SoundEffect.FIRE_SIZZLE);
             // If we should destroy this object after rendering collision.
             if (_shouldDestroyItself)
             {

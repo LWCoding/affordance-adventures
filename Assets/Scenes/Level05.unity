@@ -698,6 +698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDraggable: 1
+  IsBeingDragged: 0
 --- !u!61 &1139409247
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -893,7 +894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _proximitySFX: {fileID: 8300000, guid: 8caf5bc37df4d2a4b8b5adfe12cea74d, type: 3}
-  _sfxVolume: 0.05
+  _sfxVolume: 0.2
 --- !u!114 &1139409252
 MonoBehaviour:
   m_ObjectHideFlags: 0
