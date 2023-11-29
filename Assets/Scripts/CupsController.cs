@@ -24,27 +24,41 @@ public class CupsController : MonoBehaviour
             Debug.Assert(obj.GetComponent<CupHandler>() != null, "Cup handler not found on `Cup` tagged object!", this);
             _allCups.Add(obj.GetComponent<CupHandler>());
         }
-        // Make all cups initially lower
+        // Make all cups unclickable
         foreach (CupHandler handler in _allCups)
         {
-            handler.MoveCupDownwards();
             handler.ToggleCupClickable(false);
         }
     }
 
     private void Start()
     {
-        StartCoroutine(ShuffleCupsCoroutine(2f));
+        StartCoroutine(LowerAndShuffleCups());
     }
 
     /// <summary>
-    /// Waits a certain amount of seconds, and then shuffles each cup before
-    /// returning them to a specific position.
+    /// Lower the cups, and then shuffle them.
+    /// This Coroutine adds time in between each action so the player
+    /// can actively process them.
     /// </summary>
-    /// <param name="delayBefore">Time (in seconds) to wait before shuffling</param>
-    private IEnumerator ShuffleCupsCoroutine(float delayBefore)
+    private IEnumerator LowerAndShuffleCups()
     {
-        yield return new WaitForSeconds(delayBefore);
+        yield return new WaitForSeconds(1);
+        // Make all cups initially lower
+        foreach (CupHandler handler in _allCups)
+        {
+            handler.MoveCupDownwards();
+        }
+        yield return new WaitForSeconds(2);
+        // Shuffle the cups
+        StartCoroutine(ShuffleCupsCoroutine());
+    }
+
+    /// <summary>
+    /// Shuffles each cup before returning them to a specific position.
+    /// </summary>
+    private IEnumerator ShuffleCupsCoroutine()
+    {
         int randInc = Random.Range(1, _allCups.Count - 1);
         float timeToWaitPerShuffle = 0.8f;
         // Shuffle the cups by this random increment, modulo number of cups.
