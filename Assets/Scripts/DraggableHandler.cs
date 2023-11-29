@@ -9,5 +9,6 @@ public class DraggableHandler : MonoBehaviour
 
     [Header("Draggable Run-time Properties")]
     public bool IsDraggable;
+    public bool IsBeingDragged;
 
 }

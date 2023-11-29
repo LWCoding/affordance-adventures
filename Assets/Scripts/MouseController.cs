@@ -33,16 +33,21 @@ public class MouseController : MonoBehaviour
             RaycastHit2D hit = Physics2D.GetRayIntersection(ray, 1500f);
             if (hit.collider != null)
             {
-                hit.collider.gameObject.TryGetComponent<DraggableHandler>(out DraggableHandler dh);
-                if (dh != null)
+                hit.collider.gameObject.TryGetComponent(out DraggableHandler dh);
+                if (dh != null && dh.IsDraggable)
                 {
+                    dh.IsBeingDragged = true;
                     _objToDrag = hit.collider.gameObject;
                 }
             }
         }
         if (Input.GetMouseButtonUp(0))
         {
-            _objToDrag = null;
+            if (_objToDrag != null)
+            {
+                _objToDrag.GetComponent<DraggableHandler>().IsBeingDragged = false;
+                _objToDrag = null;
+            }
         }
     }
 

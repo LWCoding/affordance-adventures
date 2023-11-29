@@ -10,15 +10,18 @@ public class SmartMoveHandler : MonoBehaviour
     [Header("Move Proprties")]
     [SerializeField] private float _moveSpeed;
 
+    private DraggableHandler _draggableHandler;
     private int _currIdx;
 
     private void Awake()
     {
+        _draggableHandler = GetComponent<DraggableHandler>();
         _currIdx = 0;
     }
 
     private void Update()
     {
+        if (_draggableHandler != null && _draggableHandler.IsBeingDragged) { return; }
         Vector2 travelDest = _travelPoints[_currIdx];
         if (Vector2.Distance(transform.position, travelDest) > 0.1f)
         {
