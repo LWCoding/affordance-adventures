@@ -24,7 +24,10 @@ public class LevelHandler : MonoBehaviour
 
     private void Start()
     {
-        _nextLevelHandler.IsInteractable = CanOpenDoor;
+        if (_nextLevelHandler != null)
+        {
+            _nextLevelHandler.IsInteractable = CanOpenDoor;
+        }
     }
 
 }
