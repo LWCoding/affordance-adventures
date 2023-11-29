@@ -249,11 +249,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6168618552955829264, guid: 79b31cf1ed33f5e4191bf6160967f9f1, type: 3}
       propertyPath: m_Size.x
-      value: 1.8
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 6168618552955829264, guid: 79b31cf1ed33f5e4191bf6160967f9f1, type: 3}
       propertyPath: m_Size.y
-      value: 1.8
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 7729682648743265901, guid: 79b31cf1ed33f5e4191bf6160967f9f1, type: 3}
       propertyPath: _lockedSprite

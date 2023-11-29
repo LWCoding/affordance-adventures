@@ -76,7 +76,6 @@ public class CupsController : MonoBehaviour
         {
             handler.ToggleCupClickable(true);
         }
-        _draggableToDeactivateInitially.IsDraggable = true;
     }
 
 }

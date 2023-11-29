@@ -6,7 +6,7 @@ using UnityEngine;
 public class CupHandler : MonoBehaviour
 {
 
-    public static bool IsCupChosen = false;
+    public static bool IsCupChosen;
     [Header("Cup Properties")]
     [Tooltip("The object to parent to this cup after it is lowered")]
     [SerializeField] private GameObject _objToChildAfterLower;
@@ -15,6 +15,11 @@ public class CupHandler : MonoBehaviour
     [SerializeField] private bool _isCorrectCup;
 
     private bool _isClickable;
+
+    private void Awake()
+    {
+        IsCupChosen = false;
+    }
 
     /// <summary>
     /// Animates the cup to slowly lift by calling the related Coroutine.
@@ -58,6 +63,11 @@ public class CupHandler : MonoBehaviour
         if (_objToChildAfterLower != null)
         {
             _objToChildAfterLower.transform.SetParent(null);
+            _objToChildAfterLower.TryGetComponent(out DraggableHandler dh);
+            if (dh != null)
+            {
+                dh.IsDraggable = true;
+            }
         }
         // Make the cup go upwards to reveal.
         IsCupChosen = true;
@@ -110,10 +120,7 @@ public class CupHandler : MonoBehaviour
     private IEnumerator ValidateResultsCoroutine()
     {
         yield return new WaitForSeconds(1);
-        if (_isCorrectCup)
-        {
-            GameManager.Instance.WinLevel();
-        } else
+        if (!_isCorrectCup)
         {
             GameManager.Instance.ResetLevel();
         }
