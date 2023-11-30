@@ -24,7 +24,7 @@ public class ProximityDingHandler : MonoBehaviour
     {
         _timeBeforeLastDing += Time.deltaTime;
         float distToMouse = GetDistanceToMouse();
-        distToMouse = Mathf.Lerp(0.15f, 1f, distToMouse / 10);
+        distToMouse = Mathf.Lerp(0.05f, 1f, distToMouse / 5);
         if (_timeBeforeLastDing > distToMouse)
         {
             _audioSource.PlayOneShot(_proximitySFX, _sfxVolume);

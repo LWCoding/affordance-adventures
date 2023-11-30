@@ -107,7 +107,8 @@ public class CupHandler : MonoBehaviour
         while (currTime < timeToWait)
         {
             currTime += Time.deltaTime;
-            transform.position = Vector3.Lerp(initPosition, targetPosition, currTime / timeToWait);
+            transform.position = Vector2.Lerp(initPosition, targetPosition, currTime / timeToWait);
+            transform.position = new Vector3(transform.position.x, transform.position.y, -1);
             yield return null;
         }
         transform.position = targetPosition;
